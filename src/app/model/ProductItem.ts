@@ -6,6 +6,7 @@ export interface ProductItem{
   description : string;
   imgUrl : string;
   isAvailable: boolean;
+  quantity: number;
 }
 
 

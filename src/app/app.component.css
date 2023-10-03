@@ -2,3 +2,21 @@ h1 {
   text-align: center;
   padding: 20px;
 }
+.white-text-div{
+  color: white;
+}
+#container {
+  background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
+  overflow: hidden;
+  width: 100%;
+}
+
+#inner {
+  overflow: hidden;
+  width: 100%;
+}
+
+.child {
+  float: left;
+  background-color: blue;
+}

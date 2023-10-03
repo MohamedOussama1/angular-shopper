@@ -1,0 +1,15 @@
+<div class="container-fluid" style="background-color: lightgray">
+  <div  class="col">
+    <div class="row-cols-sm-1" *ngFor="let item of items;">
+      <div class="card" style="width: 18rem; margin-bottom: 10px">
+        <div class="card-body" >
+          <h5 class="card-title" >{{item?.name}}</h5>
+          <span>{{item?.quantity}}</span>
+        </div>
+  </div>
+    </div>
+    <span>
+        <h2>Total: {{getTotal(items)}} $</h2>
+      </span>
+  </div>
+</div>

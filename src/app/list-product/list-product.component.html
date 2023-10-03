@@ -1,14 +1,17 @@
-<div class="container-fluid">
+<div class="container-fluid" style="background-color: lightgray">
   <div  class="row">
-    <div class="col-sm-2"*ngFor="let product of products;">
+    <div class="col-sm-2" *ngFor="let product of products;">
       <div class="card" style="width: 18rem; margin-bottom: 10px">
         <img class="card-img-top" [src]="product?.imgUrl" alt="Card image cap">
         <div class="card-body">
           <h5 class="card-title">{{product?.name}}</h5>
           <p class="card-text">{{product?.description}}</p>
           <a href="products/{{product?.id}}" class="btn btn-primary">Details</a>
+          <p [ngStyle]="{'color': getStateColor(product).color}" style="font-weight: bold">{{getStateColor(product).state}}</p>
         </div>
       </div>
     </div>
   </div>
 </div>
+
+
