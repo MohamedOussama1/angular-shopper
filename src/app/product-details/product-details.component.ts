@@ -10,14 +10,13 @@ import {ProductService} from "../product.service";
   styleUrls: ['./product-details.component.css']
 })
 export class ProductDetailsComponent implements OnInit{
-  id : number | undefined;
-  product : ProductItem | undefined;
-  constructor(private activatedRoute : ActivatedRoute, private productService : ProductService) {
+  product : any | undefined;
+  constructor(private route : ActivatedRoute, private productService : ProductService) {
   }
   ngOnInit(): void {
-    this.activatedRoute.params.subscribe(params => {
-      this.id = params['id'];
+    this.route.params.subscribe(params => {
+      const id : number = params['id'];
+      this.productService.getProductById(id).subscribe((response) => { this.product = response});
     })
-     this.product = this.productService.getById(this.id);
     }
 }

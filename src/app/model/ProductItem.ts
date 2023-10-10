@@ -1,12 +1,16 @@
 export interface ProductItem{
   id : number;
-  name : string;
+  title : string;
   price : number;
-  score: number;
+  rating: number;
+  stock: number;
+  brand: string;
   description : string;
-  imgUrl : string;
+  thumbnail: string;
+  images : Array<string>;
+  discountPercentage: number;
+  category: string;
   isAvailable: boolean;
-  quantity: number;
 }
 
 
