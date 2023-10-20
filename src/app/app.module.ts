@@ -10,8 +10,9 @@ import {ProductService} from "./product.service";
 import { CartComponent } from './cart/cart.component';
 import {NgbDropdownModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {HttpClientModule} from "@angular/common/http";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { CounterInputComponent } from './counter-input/counter-input.component';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { CounterInputComponent } from './counter-input/counter-input.component';
     ListProductComponent,
     ProductDetailsComponent,
     CartComponent,
-    CounterInputComponent
+    CounterInputComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,8 @@ import { CounterInputComponent } from './counter-input/counter-input.component';
     NgOptimizedImage,
     NgbModule,
     NgbDropdownModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

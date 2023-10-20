@@ -1,0 +1,23 @@
+{
+  "name": "ecom-app",
+  "version": "1.0.0",
+  "description": "Ecommerce App using Angular",
+  "main": "server.js",
+  "scripts": {
+    "test": "ng test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "ecom-app"
+  },
+  "keywords": [
+    "Ecommerce",
+    "Angular"
+  ],
+  "author": "Mohamed Oussama SAIDI",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
