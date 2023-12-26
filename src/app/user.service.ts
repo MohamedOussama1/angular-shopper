@@ -1,22 +1,21 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-
+import {User} from "./model/User";
 @Injectable({
   providedIn: 'root'
 })
-export class ProductService {
+export class UserService {
   products : any;
   constructor(private http : HttpClient) {}
   getAll() : Observable<any>{
     return this.http.get("https://dummyjson.com/products")
   }
   getProductById(id:number|undefined) : Observable<any>{
-    console.log("heeeeeeeeeeeere")
     return this.http.get("https://dummyjson.com/products/" + id);
   }
-  getProductBySearchText(searchText : string|undefined) : Observable<any>{
-    console.log("search executed")
-    return this.http.get("https://dummyjson.com/products/search?q=" + searchText)
+  createUser(user: User){
+    this.http.post("http://localhost:8080/users/", {"name": "a" , "pronoun": "a", "email":"a", "password":"a", "age":12, "username":"user"})
+    console.log("heeeeeeeeeeeeere")
   }
 }

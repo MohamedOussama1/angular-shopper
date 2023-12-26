@@ -1,0 +1,81 @@
+form{
+  background-color: #BAFF29;
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+h1, p {
+  text-align: center;
+  color: black;
+  font-size: large;
+}
+h1{
+  font-size: xxx-large;
+  font-family: Impact, serif;
+  padding: 12px;
+}
+.boldoption {
+  font-weight: bold;
+  font-size: large;
+  font-family: sans-serif;
+  display: block;
+}
+label {
+  color: white;
+  font-family: arial, serif;
+  font-size: large;
+  display: inline-block;
+  padding: 10px;
+}
+input, select, textarea {
+  display: block;
+  margin: 0px auto;
+  width: 90%;
+  height: 30px;
+  border-radius: 7px;
+  color: hsl(200, 76%, 26%);
+  font-size: large;
+  background-color: white;
+}
+input[name="rating"], input[name="interest"]{
+  display: inline;
+  width: 17px;
+  outline: none;
+  height: 20px;
+  margin-left: 16px;
+  margin-right: 0px;
+}
+.choice {
+  display: inline;
+
+}
+div {
+  width: 100%;
+}
+
+textarea {
+  resize: none;
+  height: auto;
+  margin-bottom: 20px;
+}
+hr {
+  background-color: white;
+  color: white;
+  width: 100%;
+  height: 3px;
+  border-radius: 8px;
+  margin: 40px 0px;
+}
+#submit {
+  color: white;
+  background-color: forestgreen;
+  cursor: pointer;
+  height: 40px;
+  border-radius: 0px;
+  outline: none;
+}
+#submit:hover{
+  color: black;
+  background-color: white;
+}
