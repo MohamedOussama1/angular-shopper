@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, numberAttribute} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {User} from "./model/User";
@@ -14,8 +14,13 @@ export class UserService {
   getProductById(id:number|undefined) : Observable<any>{
     return this.http.get("https://dummyjson.com/products/" + id);
   }
-  createUser(user: User){
-    this.http.post("http://localhost:8080/users/", {"name": "a" , "pronoun": "a", "email":"a", "password":"a", "age":12, "username":"user"})
-    console.log("heeeeeeeeeeeeere")
+  getUserById(id : number | undefined) : Observable<any>{
+    return this.http.get("http://localhost:8080/users/" + id);
+  }
+  createUser(user: User) : Observable<any>{
+    return this.http.post("http://localhost:8080/users/", user);
+  }
+  updateUser(user: User){
+    this.http.put("http://localhost:8080/users/", user).subscribe(value => console.log(value));
   }
 }

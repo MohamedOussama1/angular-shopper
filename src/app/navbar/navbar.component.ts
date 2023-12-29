@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import {Component, EventEmitter, Output} from '@angular/core';
+import {ProductService} from "../product.service";
 
 @Component({
   selector: 'app-navbar',
@@ -8,10 +9,12 @@ import { Component } from '@angular/core';
 export class NavbarComponent {
 
   searchText : string|undefined;
+  constructor(private productService : ProductService) {}
+  @Output() textChanged = new EventEmitter<string>();
 
   // @ts-ignore
-  onTextChange(value) {
-    this.products = this.productService.getProductBySearchText(value).subscribe((response) => {this.products = response.products});
+  onTextChange() {
+      this.textChanged.emit(this.searchText);
   }
 
 }

@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Output, OnInit} from '@angular/core';
 import {ProductItem} from "../model/ProductItem";
 import {ProductService} from "../product.service";
 import {Search} from "../model/Search";
@@ -13,7 +13,12 @@ export class ListProductComponent implements OnInit{
   }
   products : any;
   ngOnInit(): void {
-    this.products = this.productService.getAll().subscribe((response) => {this.products = response.products});
+      this.productService.getAll().subscribe((response) => {this.products = response.products});
+  }
+
+  updateProducts($event : string) : void{
+    console.log("updating products with " + $event);
+    this.productService.getFilteredProducts($event).subscribe((response) => { this.products = response.products});
   }
 
   getStateColor(product : ProductItem) : {"state": string, "color": string}{

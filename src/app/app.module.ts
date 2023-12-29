@@ -18,6 +18,8 @@ import { CartComponent } from './cart/cart.component';
 import {ProductService} from "./product.service";
 import {UserService} from "./user.service";
 import { NavbarComponent } from './navbar/navbar.component';
+import { PersonalInfoComponent } from './personal-info/personal-info.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -28,7 +30,9 @@ import { NavbarComponent } from './navbar/navbar.component';
     CartComponent,
     CounterInputComponent,
     RegisterComponent,
-    NavbarComponent
+    NavbarComponent,
+    PersonalInfoComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

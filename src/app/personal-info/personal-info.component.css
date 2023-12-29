@@ -1,0 +1,81 @@
+form{
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+h1{
+  font-weight: 400;
+  font-size: 28px;
+  line-height: 1.2;
+  color: #e0ded9;
+  margin-bottom: 10px;
+}
+#title{
+  color: black;
+  text-align: center;
+  font-size: 38px;
+  line-height: 1.2;
+  font-weight: 700;
+  font-family: arial, serif;
+  margin: 20px 0;
+}
+label{
+  display: block;
+  padding-left: 2px;
+  padding-bottom: 2px;
+  font-weight: 700;
+  color: white;
+  font-size: 13px;
+  line-height: 19px;
+}
+input{
+  margin-bottom: 15px;
+  padding: 3px 7px;
+  border-right: 1px;
+  vertical-align: middle;
+  width: 100%;
+  font-size: 100%;
+  line-height: normal;
+}
+hr {
+  background-color: white;
+  color: white;
+  width: 100%;
+  height: 3px;
+  border-radius: 8px;
+}
+#submit {
+  color: white;
+  background-color: forestgreen;
+  cursor: pointer;
+  width: 100%;
+  height: 37px;
+  border-radius: 10px;
+  font-size: 13px;
+  opacity: 0.85;
+}
+#submit:hover{
+  opacity: 1;
+}
+/*select, textarea{*/
+/*  display: block;*/
+/*  margin: 0 auto;*/
+/*  width: 90%;*/
+/*  height: 30px;*/
+/*  border-radius: 7px;*/
+/*  color: hsl(200, 76%, 26%);*/
+/*  background-color: white;*/
+/*}*/
+/*input[name="rating"], input[name="interest"]{*/
+/*  display: inline;*/
+/*  width: 17px;*/
+/*  outline: none;*/
+/*  height: 20px;*/
+/*  margin-left: 16px;*/
+/*  margin-right: 0;*/
+/*}*/
+/*.choice {*/
+/*  display: inline;*/
+
+/*}*/

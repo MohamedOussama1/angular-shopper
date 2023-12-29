@@ -6,17 +6,15 @@ import {Observable} from "rxjs";
   providedIn: 'root'
 })
 export class ProductService {
-  products : any;
+  filteredProducts : any;
   constructor(private http : HttpClient) {}
   getAll() : Observable<any>{
     return this.http.get("https://dummyjson.com/products")
   }
   getProductById(id:number|undefined) : Observable<any>{
-    console.log("heeeeeeeeeeeere")
     return this.http.get("https://dummyjson.com/products/" + id);
   }
-  getProductBySearchText(searchText : string|undefined) : Observable<any>{
-    console.log("search executed")
-    return this.http.get("https://dummyjson.com/products/search?q=" + searchText)
+  getFilteredProducts(searchText : string) : Observable<any>{
+      return this.http.get("https://dummyjson.com/products/search?q=" + searchText);
   }
 }

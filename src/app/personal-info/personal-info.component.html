@@ -1,0 +1,59 @@
+<div style=" align-items: center">
+  <h1 id="title">Shopper</h1>
+  <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm" style="width: 350px; padding: 14px 18px; min-width: 0" class="bg-dark">
+    <h1>Edit profile</h1>
+    <div class="a-row a-spacing-base">
+      <label id="name-label" for="name" >Name</label>
+      <input id="name" name="name" placeholder="First and last name"
+             [value]="user.name"
+             [(ngModel)]="user.name"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="email-label" for="email" >Email</label>
+      <input id="email" name="email" placeholder=""
+             type="email"
+             [value]="user.email"
+             [(ngModel)]="user.email"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="age-label" for="age" >age</label>
+      <input id="age" name="age" placeholder=""
+             type="number"
+             [value]="user.age"
+             [(ngModel)]="user.age"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="mobileNumber-label" for="mobileNumber" >Phone</label>
+      <input id="mobileNumber" name="mobileNumber" placeholder="ex +212 664895544"
+             [value]="user.mobileNumber"
+             [(ngModel)]="user.mobileNumber"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="city-label" for="city" >city</label>
+      <input id="city" name="city" placeholder=""
+             [value]="user.city"
+             [(ngModel)]="user.city"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="address-label" for="address" >address</label>
+      <input id="address" name="address" placeholder=""
+             [value]="user.address"
+             [(ngModel)]="user.address"
+             required>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="zip-label" for="zip" >zip</label>
+      <input id="zip" name="zip" placeholder=""
+             [value]="user.zip"
+             [(ngModel)]="user.zip"
+             required>
+    </div>
+    <hr>
+    <input id="submit" type="submit" value="Save changes">
+  </form>
+</div>

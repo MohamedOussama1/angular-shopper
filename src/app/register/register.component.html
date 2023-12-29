@@ -1,80 +1,40 @@
-  <h1 id="title">Shopper Registration Form</h1>
-  <p id="description">Welcome to Shopper</p>
-  <div style="width: 1000px; height: 1000px; justify-content: center; display: flex; align-items: center">
-  <form id="survey-form" (ngSubmit)="register(userForm)" #userForm="ngForm" style="height: 1000px" class="bg-dark">
-    <div style="width: 450px">
-      <label id="username-label" for="username" class="boldoption">Username</label>
-      <input id="username" type="text" placeholder="Enter your username"
-             name="username"
-             [(ngModel)]="user.username"
-             class="form-control"
+<div style=" align-items: center">
+<h1 id="title">Shopper</h1>
+  <form id="register-form" (ngSubmit)="register(registerForm)" #registerForm="ngForm" style="width: 350px; padding: 14px 18px; min-width: 0" class="bg-dark">
+    <h1>Create account</h1>
+    <div class="a-row a-spacing-base">
+      <label id="name-label" for="name" >Name</label>
+      <input id="name" name="name" placeholder="First and last name"
+             [(ngModel)]=user.name
              required>
     </div>
-    <div>
-      <label id="name-label" for="name" class="boldoption">Last Name</label>
-      <input id="name" type="text" placeholder="Enter your name"
-             name="name"
-             [(ngModel)]="user.name"
-             class="form-control"
+    <div class="a-row a-spacing-base">
+      <label id="email-label" for="email" >Email</label>
+      <input id="email" name="email" placeholder=""
+             type="email"
+             [(ngModel)]=user.email
              required>
     </div>
-    <div>
-      <label id="pronoun-label" for="pronoun" class="boldoption">First Name</label>
-      <input id="pronoun" type="text" placeholder="Enter your pronoun"
-             name="pronoun"
-             [(ngModel)]="user.pronoun"
-             class="form-control"
+    <div class="a-row a-spacing-base">
+      <label id="password-label" for="password" >Password</label>
+      <input id="password" name="password" placeholder="At least 8 characters"
+             type="password"
+             [(ngModel)]=user.password
              required>
     </div>
-    <div>
-      <label id="email-label" for="email" class="boldoption">Email</label>
-      <input id="email" type="email" placeholder="Enter your email"
-             name="email"
-             [(ngModel)]="user.email"
-             class="form-control"
-             required>
-    </div>
-    <div>
-      <label id="number-label" for="number" class="boldoption">Age</label>
-      <input id="number" type="number" min="13" max="121" placeholder="Enter your age"
-             name="age"
-             [(ngModel)]="user.age"
-             class="form-control"
-             required>
-    </div>
-    <div>
-      <label id="password-label" for="password" class="boldoption">Password</label>
-      <input id="password" type="text" placeholder="Enter your password"
-             name="password"
-             [(ngModel)]="user.password"
-             class="form-control"
-             required>
-    </div>
-    <div>
-      <label id="city-label" for="city" class="boldoption">City</label>
-      <input id="city" type="text" placeholder="Enter your city"
-             name="city"
-             [(ngModel)]="user.city"
-             class="form-control"
-             required>
-    </div>
-    <div>
-      <label id="address-label" for="address" class="boldoption">Address</label>
-      <input id="address" type="text" placeholder="Enter your address"
-             name="address"
-             [(ngModel)]="user.address"
-             class="form-control"
-             required>
-    </div>
-    <div>
-      <label id="zip-label" for="zip" class="boldoption">Zip</label>
-      <input id="zip" type="number" placeholder="Enter your zip"
-             name="zip"
-             [(ngModel)]="user.zip"
-             class="form-control"
+    <div class="a-row a-spacing-base">
+      <label id="passwordConfirmation-label" for="passwordConfirmation" >Re-enter password</label>
+      <input id="passwordConfirmation" name="passwordConfirmation" placeholder=""
+             type="password"
+             [(ngModel)]=passwordConfirmation
              required>
     </div>
     <hr>
-    <input id="submit" type="submit" value="Sign in">
+    <input id="submit" class="button-input" type="submit" value="Continue">
+    <hr>
+    <div>
+      <span style="color: white">Already have an account? </span>
+      <a href="/sign-in" style="color: rgb(89, 183, 255)">Sign in</a>
+    </div>
   </form>
 </div>
