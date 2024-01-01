@@ -20,6 +20,8 @@ import {UserService} from "./user.service";
 import { NavbarComponent } from './navbar/navbar.component';
 import { PersonalInfoComponent } from './personal-info/personal-info.component';
 import { LoginComponent } from './login/login.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CartItemComponent } from './cart-item/cart-item.component';
 
 
 @NgModule({
@@ -32,7 +34,8 @@ import { LoginComponent } from './login/login.component';
     RegisterComponent,
     NavbarComponent,
     PersonalInfoComponent,
-    LoginComponent
+    LoginComponent,
+    CartItemComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,6 +46,7 @@ import { LoginComponent } from './login/login.component';
     NgbModule,
     NgbDropdownModule,
     FormsModule,
+    FontAwesomeModule,
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]

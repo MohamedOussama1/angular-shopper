@@ -1,1 +1,47 @@
-<p>login works!</p>
+<div style=" align-items: center">
+  <h1 id="title">Shopper</h1>
+  <form id="email-form" (ngSubmit)="continue(emailForm)" #emailForm="ngForm" *ngIf="(isValidEmail <= 1) else passwordForm" class="bg-dark">
+    <h1>Sign in</h1>
+    <div *ngIf="isValidEmail == 1" >
+      <p style="color: red">We cannot find an account with that email address</p>
+    </div>
+    <div class="a-row a-spacing-base">
+      <label id="email-label" for="email" >Email</label>
+      <input id="email" name="email" placeholder=""
+             type="email"
+             [(ngModel)]=email
+             required>
+    </div>
+    <input id="continue" class="button-input" type="submit" value="Continue">
+    <hr>
+    <div>
+      <span style="color: white">New to Shopper? </span>
+      <a href="/register" style="color: rgb(89, 183, 255)">Create Account</a>
+    </div>
+  </form>
+  <ng-template #passwordForm>
+    <form id="password-form" (ngSubmit)="login(passwordForm)" #passwordForm="ngForm" class="bg-dark">
+      <h1>Sign in</h1>
+      <div *ngIf="isInValidPassword" >
+        <p style="color: red">Incorrect password</p>
+      </div>
+      <p style="color: white">
+        {{this.email}}
+        <a href="/login"> Change</a>
+      </p>
+      <div class="a-row a-spacing-base" >
+        <label id="password-label" for="password" >Password</label>
+        <input id="password" name="password" placeholder="At least 8 characters"
+               type="password"
+               [(ngModel)]=password
+               required>
+      </div>
+      <input id="sing-in" class="button-input" type="submit" value="Sign in" onclick="location.href='/'">
+      <hr>
+      <div>
+        <span style="color: white">New to Shopper? </span>
+        <a href="/register" style="color: rgb(89, 183, 255)">Create Account</a>
+      </div>
+    </form>
+  </ng-template>
+</div>

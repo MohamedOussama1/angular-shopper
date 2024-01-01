@@ -1,16 +1,59 @@
-<div style="text-align: center; display: flex; background-color: lightgray; justify-content: center; align-items: center">
-<img  style="height: 30rem" [src]="product?.thumbnail" alt="Card image cap">
-<div  style="width: 18rem; height: 30rem; text-align: center; background-color: white">
-  <div>
+<div style="margin-top: 100px; text-align: center; display: flex; background-color: white; justify-content: center;"
+     xmlns="http://www.w3.org/1999/html">
+  <div id="leftCol">
+    <img  style="height: 250px; width: 300px; margin-bottom: 20px" [src]="mainImage" alt="Card image cap">
+    <div id="altImages" class="a-row">
+      <ul class="gridAltImageViewLayoutIn1x7">
+        <li *ngFor="let image of product?.images">
+      <span style="display: inline;">
+        <img [src]="image"
+             style="width: 50px; height: 50px"
+             (mouseover)="setMainImage(image)"
+             alt="{{product?.thumbnail}}">
+      </span>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="centerColAlign">
     <h2 class="card-title" style="margin-bottom: 3rem">{{product?.title}}</h2>
+    <p style="width: 400px">{{product?.description}}</p>
+    <h4>score: {{product?.rating}}</h4>
+    <h4>{{product?.price}} Dh</h4>
+  </div>
+  <div id="rightCol">
+    <div style="display: inline-grid; grid-template-columns: repeat(3, 1fr)">
+    <button class="btn btn-link px-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+      <fa-icon [icon]="faMinus"></fa-icon>
+    </button>
+
+    <input id="form2" min="0" max="20" name="quantity" value="1" type="number"
+           style="width: 50px"
+           class="form-control form-control-sm" />
+
+    <button class="btn btn-link px-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+    </div>
+    <!-- Example single danger button -->
+    <div class="btn-group">
+      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+        Action
+      </button>
+      <ul class="dropdown-menu" aria-expanded="false">
+        <li><a class="dropdown-item" href="#">Action</a></li>
+        <li><a class="dropdown-item" href="#">Another action</a></li>
+        <li><a class="dropdown-item" href="#">Something else here</a></li>
+        <li><hr class="dropdown-divider"></li>
+        <li><a class="dropdown-item" href="#">Separated link</a></li>
+      </ul>
+    </div>
+    <button class="btn btn-primary" style="background-color: forestgreen">Add to cart</button>
   </div>
   <div>
-    <p>{{product?.description}}</p>
   </div>
-  <div style="margin-top: 3rem">
-    <h4>score: {{product?.rating}}</h4>
-    <h4>price: {{product?.price}}</h4>
-  </div>
-  <app-counter-input></app-counter-input>
+<!--  <app-counter-input></app-counter-input>-->
 </div>
-</div>
+<!--</div>-->

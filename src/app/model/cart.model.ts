@@ -1,4 +1,11 @@
-export interface ProductItem{
+export interface Cart {
+  items : Array<CartItem>;
+}
+export interface CartItem {
+  product : Product;
+  quantity : number;
+}
+export interface Product {
   id : number;
   title : string;
   price : number;
@@ -12,5 +19,3 @@ export interface ProductItem{
   category: string;
   isAvailable: boolean;
 }
-
-

@@ -1,6 +1,6 @@
 <div style=" align-items: center">
   <h1 id="title">Shopper</h1>
-  <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm" style="width: 350px; padding: 14px 18px; min-width: 0" class="bg-dark">
+  <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm"  class="bg-dark">
     <h1>Edit profile</h1>
     <div class="a-row a-spacing-base">
       <label id="name-label" for="name" >Name</label>
@@ -22,38 +22,33 @@
       <input id="age" name="age" placeholder=""
              type="number"
              [value]="user.age"
-             [(ngModel)]="user.age"
-             required>
+             [(ngModel)]="user.age">
     </div>
     <div class="a-row a-spacing-base">
       <label id="mobileNumber-label" for="mobileNumber" >Phone</label>
       <input id="mobileNumber" name="mobileNumber" placeholder="ex +212 664895544"
              [value]="user.mobileNumber"
-             [(ngModel)]="user.mobileNumber"
-             required>
+             [(ngModel)]="user.mobileNumber">
     </div>
     <div class="a-row a-spacing-base">
       <label id="city-label" for="city" >city</label>
       <input id="city" name="city" placeholder=""
              [value]="user.city"
-             [(ngModel)]="user.city"
-             required>
+             [(ngModel)]="user.city">
     </div>
     <div class="a-row a-spacing-base">
       <label id="address-label" for="address" >address</label>
       <input id="address" name="address" placeholder=""
              [value]="user.address"
-             [(ngModel)]="user.address"
-             required>
+             [(ngModel)]="user.address">
     </div>
     <div class="a-row a-spacing-base">
       <label id="zip-label" for="zip" >zip</label>
       <input id="zip" name="zip" placeholder=""
              [value]="user.zip"
-             [(ngModel)]="user.zip"
-             required>
+             [(ngModel)]="user.zip">
     </div>
     <hr>
-    <input id="submit" type="submit" value="Save changes">
+    <input id="submit" class="button-input" type="submit" value="Save changes">
   </form>
 </div>

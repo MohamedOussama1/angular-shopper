@@ -1,14 +1,17 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
+import {User} from "./model/User";
+import {UserService} from "./user.service";
+import {FontAwesomeModule} from "@fortawesome/angular-fontawesome";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent{
   title = 'GzShop';
-  searchText : string = '';
-  onTextChange() {
-
+  user? : User | null;
+  constructor(private userService : UserService) {
   }
+
 }

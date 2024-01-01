@@ -1,31 +1,54 @@
-<app-navbar (textChanged)="updateProducts($event)">
+<app-navbar
+  (textChanged)="updateProducts($event)"
+  (categoryChanged)="updateCategory($event)">
 </app-navbar>
-<!--<div id="container" style="background-color: lightgray">-->
-<!--
-  <div  class="row"> <div class="col-sm-2" *ngFor="let product of products;">
-      <div class="card" style="width: 18rem; margin-bottom: 10px">
-        <img class="card-img-top" style="object-fit: contain" width="100px" height="240px" [src]="product?.thumbnail" alt="Card image cap">
-        <div class="card-body">
-          <h5 class="card-title">{{product?.title}}</h5>
-          <p class="card-text" style="height: 15ch;">{{product?.description}}</p>
-          <a href="products/{{product?.id}}" class="btn btn-primary">Details</a>
-          <p [ngStyle]="{'color': getStateColor(product).color}" style="font-weight: bold">{{getStateColor(product).state}}</p>
-        </div>
-      </div>
-    </div>
-  </div>
--->
-  <div  class="grid"> <div class="flexbox-item" *ngFor="let product of products;">
-    <div class="card" style="width: 15rem; margin-bottom: 10px">
-      <img class="card-img-top; img" [src]="product?.thumbnail" alt="Card image cap">
+<div  class="grid">
+  <div class="flexbox-item" *ngFor="let product of products;">
+    <div class="card" style="width: 15rem; border-color: white; margin-bottom: 10px">
+      <a href="products/{{product?.id}}">
+        <img class="card-img-top; img" [src]="product?.thumbnail" alt="Card image cap">
+      </a>
       <div class="card-body">
+        <div class="quantity-stepper">
+            <button *ngIf="false else inCartButton"
+              class="btn btn-primary add-btn"
+              style="margin-bottom: 20px; width: 75px; border-radius: 100px; display: flex; justify-content: space-around;"
+              (click)="onAddToCart(product)"
+              href="/cart"
+            >
+              <fa-icon [icon]="faPlus" style="width: 35px; color: white"></fa-icon>
+              <span>Add</span>
+            </button>
+          <ng-template #inCartButton>
+            <button
+                    class="btn btn-primary add-btn"
+                    style="margin-bottom: 20px; width: 8px; border-radius: 100px; display: flex; justify-content: space-around;"
+                    (click)="onAddToCart(product)"
+                    href="/cart"
+            >
+              <fa-icon [icon]="faMinus" style="width: 35px; color: white"></fa-icon>
+            </button>
+            <span class="quantity">1</span>
+            <button
+              class="btn btn-primary add-btn"
+              style="margin-bottom: 20px; width: 8px; border-radius: 100px; display: flex; justify-content: space-around;"
+              (click)="onAddToCart(product)"
+              href="/cart"
+            >
+              <fa-icon [icon]="faPlus" style="width: 35px; color: white"></fa-icon>
+            </button>
+          </ng-template>
+        </div>
         <h5 class="card-title">{{product?.title}}</h5>
-        <p class="card-text" style="height: 15ch;">{{product?.description}}</p>
-        <a href="products/{{product?.id}}" class="btn btn-primary">Details</a>
-        <p [ngStyle]="{'color': getStateColor(product).color}" style="font-weight: bold">{{getStateColor(product).state}}</p>
+        <a href="products/{{product?.id}}" style="text-decoration: none; color: black">
+          <div style="height: 68px">
+            <p class="description line-clamp">{{product?.description}}</p>
+          </div>
+        </a>
+        <h5 class="price">{{product?.price}} Dhs</h5>
+<!--        <p [ngStyle]="{'color': getStateColor(product).color}" style="font-weight: bold">{{getStateColor(product).state}}</p>-->
       </div>
     </div>
   </div>
-<!--  </div>-->
 </div>
 

@@ -1,0 +1,36 @@
+<div class="row mb-4 d-flex justify-content-between align-items-center">
+  <div class="col-md-2 col-lg-2 col-xl-2">
+    <img
+      src="{{cartItem?.product?.thumbnail}}"
+      class="img-fluid rounded-3" alt="Cotton T-shirt">
+  </div>
+  <div class="col-md-3 col-lg-3 col-xl-3">
+    <h6 class="text-muted">{{cartItem?.product?.category}}</h6>
+    <h6 class="text-black mb-0">{{cartItem?.product?.title}}</h6>
+  </div>
+  <div class="col-md-3 col-lg-3 col-xl-2 d-flex">
+    <button class="btn btn-link px-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
+      <fa-icon [icon]="faMinus"></fa-icon>
+    </button>
+
+    <input id="form2" min="0" max="20" name="quantity" value="1" type="number"
+           style="width: 50px"
+           class="form-control form-control-sm" />
+
+    <button class="btn btn-link px-2"
+            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
+      <fa-icon [icon]="faPlus"></fa-icon>
+    </button>
+  </div>
+  <div class="col-md-3 col-lg-2 col-xl-2 offset-lg-1">
+    <h6 class="mb-0">€ {{cartItem?.product?.price}}</h6>
+  </div>
+  <div class="col-md-1 col-lg-1 col-xl-1 text-end" style="min-width: 40px; min-height: 40px">
+    <a href="#!" class="text-muted" style="width: 30px">
+      <fa-icon [icon]="faTimes"></fa-icon>
+    </a>
+  </div>
+</div>
+
+<hr class="my-4">

@@ -1,0 +1,50 @@
+#leftCol {
+  position: sticky;
+  top: 4px;
+  height: 100%;
+  width: 32.0%;
+  max-width: 300px;
+  float: left;
+  justify-content: center;
+}
+centerColAlign {
+  margin-left: 33.5%;
+  margin-right: 270px;
+}
+#rightCol {
+  /*margin-left: 0;*/
+  float: right;
+  width: 244px;
+  margin-left: 20px;
+}
+.a-row {
+  width : 100%;
+  display: block;
+}
+/*@supports (display:grid)*/
+#altImages .gridAltImageViewLayoutIn1x7 {
+  display: grid;
+  grid-auto-columns: 12.58%;
+  grid-gap: 1.99%;
+  justify-content: center;
+  grid-auto-flow: column;
+}
+ul{
+  margin-left: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+}
+li {
+  list-style: none;
+  word-wrap: break-word;
+  margin: 0;
+  margin-bottom: 8px!important;
+  box-sizing: border-box;
+  display: list-item;
+  text-align: -webkit-match-parent;
+}
+img {
+  border-radius: 8px;
+  vertical-align: top;
+}

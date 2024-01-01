@@ -1,0 +1,52 @@
+header {
+  width: 100%;
+  display: flex;
+  justify-content:space-between;
+  align-items: center;
+  padding: 20px 1rem;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #0d6efd;
+}
+a {
+  height: 48px;
+  width: 80px;
+  color: white;
+  white-space: nowrap;
+}
+#nav{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+ul{
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-column-gap: 25px;
+  justify-content: center;
+  align-items: center;
+}
+li {
+  color: white;
+  list-style: none;
+  word-break: break-word;
+  text-align: center;
+  width: 80px;
+}
+.custom-select {
+  background-color: white;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  width: auto;
+  font-family: inherit;
+  cursor: pointer;
+  box-sizing: content-box;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+input{
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}
+

@@ -1,8 +1,10 @@
 form{
-  max-width: 500px;
+  width: 350px;
   margin: 10px auto;
-  padding: 10px;
   border-radius: 8px;
+  padding: 14px 18px;
+  min-width: 0;
+  max-width: 500px;
 }
 h1{
   font-weight: 400;
@@ -45,7 +47,7 @@ hr {
   height: 3px;
   border-radius: 8px;
 }
-#submit {
+.button-input{
   color: white;
   background-color: forestgreen;
   cursor: pointer;
@@ -55,7 +57,7 @@ hr {
   font-size: 13px;
   opacity: 0.85;
 }
-#submit:hover{
+.button-input:hover{
   opacity: 1;
 }
 /*select, textarea{*/
