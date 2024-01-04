@@ -1,48 +1,30 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnChanges, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../cart.service";
 import {Cart, CartItem} from "../model/cart.model";
-import {faCartPlus, faPlus, faMinus, faTimes, faTrashCan} from '@fortawesome/free-solid-svg-icons';
 import {Subscription} from "rxjs";
-import {HttpClient} from "@angular/common/http";
 
 @Component({
   selector: 'app-cart',
   templateUrl: './cart.component.html',
   styleUrls: ['./cart.component.css']
 })
-export class CartComponent implements OnInit, OnDestroy{
-  faCartPlus = faCartPlus;
-  faTrashCan = faTrashCan
-  cart : Cart | undefined;
+export class CartComponent {
+  cart : Cart;
   cartSubscription: Subscription | undefined;
-  constructor(private cartService: CartService, private http: HttpClient) {}
-
-  ngOnInit(): void {
+  constructor(private cartService: CartService) {
     this.cartSubscription = this.cartService.cart$.subscribe((_cart) => {
       this.cart = _cart;
     });
   }
-
-  getTotal(items: CartItem[]): number {
-    return this.cartService.getTotal(items);
+  getTotal(): number {
+    return this.cartService.getTotal(this.cart.items);
   }
 
-  onAddQuantity(item: CartItem): void {
-    this.cartService.addToCart(item);
+  getNumberOfItems() : number {
+    return this.cartService.getNumberOfItems(this.cart.items);
   }
 
-  // onRemoveFromCart(item: CartItem): void {
-  //   this.cartService.removeFromCart(item);
-  // }
-  //
-  // onRemoveQuantity(item: CartItem): void {
-  //   this.cartService.removeQuantity(item);
-  // }
-  //
-  // onClearCart(): void {
-  //   this.cartService.clearCart();
-  // }
-  //
+
   // onCheckout(): void {
   //   this.http
   //     .post('http://localhost:4242/checkout', {
@@ -50,7 +32,6 @@ export class CartComponent implements OnInit, OnDestroy{
   //     })
   //     .subscribe(async (res: any) => {
   //     });
-  // }
   //
   ngOnDestroy() {
     // if (this.cartSubscription) {

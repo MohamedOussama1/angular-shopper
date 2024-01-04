@@ -1,59 +1,67 @@
-<div style="margin-top: 100px; text-align: center; display: flex; background-color: white; justify-content: center;"
+<div id="flex-container" style="margin: 10%; text-align: center; display: flex; background-color: white; justify-content: center;"
      xmlns="http://www.w3.org/1999/html">
-  <div id="leftCol">
-    <img  style="height: 250px; width: 300px; margin-bottom: 20px" [src]="mainImage" alt="Card image cap">
-    <div id="altImages" class="a-row">
-      <ul class="gridAltImageViewLayoutIn1x7">
-        <li *ngFor="let image of product?.images">
+  <div id="right">
+    <h5 class="text-decoration-underline" style="font-weight: 300; font-size: 16px">{{cartItem.product?.category}}</h5>
+    <h2 style="margin-bottom: 0.5rem">{{cartItem.product?.title}}</h2>
+    <div style="height: 90px; width: 300px">
+      <p class="description line-clamp">{{cartItem.product?.description}}</p>
+    </div>
+    <span class="d-flex flex-row space-between">
+    <star-rating [disabled]=true [starType]="'svg'" [rating]="cartItem.product.rating"></star-rating>
+      <p style="font-size: 14px">({{cartItem.product?.rating}})</p>
+      </span>
+    <h4>{{cartItem.product?.price}} Dh</h4>
+    <div class="quantity-stepper">
+      <button *ngIf="!cartQty else inCartButton"
+              id="addToCart"
+              class="btn btn-primary add-btn"
+              (click)="onAddToCart()"
+              href="/cart"
+      >
+        <span>Add to cart</span>
+      </button>
+    <ng-template #inCartButton>
+        <button
+          class="btn btn-primary add-btn"
+          style="margin-bottom: 20px; width: 8px; border-radius: 100px; display: flex; justify-content: space-around;"
+          (click)="onRemoveFromCart()"
+          href="/cart"
+        >
+          <fa-icon [icon]="faMinus" style="width: 35px; color: white"></fa-icon>
+        </button>
+        <span class="quantity">{{cartQty}}</span>
+        <button
+          class="btn btn-primary add-btn"
+          style="margin-bottom: 20px; width: 8px; border-radius: 100px; display: flex; justify-content: space-around;"
+          (click)="onAddToCart()"
+          href="/cart"
+        >
+          <fa-icon [icon]="faPlus" style="width: 35px; color: white"></fa-icon>
+        </button>
+    </ng-template>
+    </div>
+  </div>
+  <div id="left">
+    <div class="d-md-flex flex-column h-100">
+      <div class="h-100 position-relative">
+        <section class="d-md-flex align-items-center top-0" style="position: inherit">
+          <div class="position-relative" style="width: 117px; margin: 0.5rem">
+            <div id="imagesGrid">
+              <div class="imageItem" *ngFor="let image of cartItem.product?.images">
       <span style="display: inline;">
         <img [src]="image"
              style="width: 50px; height: 50px"
              (mouseover)="setMainImage(image)"
-             alt="{{product?.thumbnail}}">
+             alt="{{cartItem.product?.thumbnail}}">
       </span>
-        </li>
-      </ul>
+              </div>
+            </div>
+          </div>
+          <div class="mainImageContainer">
+            <img  id="mainImage" [src]="mainImage" alt="Card image cap">
+          </div>
+        </section>
+      </div>
     </div>
   </div>
-  <div class="centerColAlign">
-    <h2 class="card-title" style="margin-bottom: 3rem">{{product?.title}}</h2>
-    <p style="width: 400px">{{product?.description}}</p>
-    <h4>score: {{product?.rating}}</h4>
-    <h4>{{product?.price}} Dh</h4>
-  </div>
-  <div id="rightCol">
-    <div style="display: inline-grid; grid-template-columns: repeat(3, 1fr)">
-    <button class="btn btn-link px-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepDown()">
-      <fa-icon [icon]="faMinus"></fa-icon>
-    </button>
-
-    <input id="form2" min="0" max="20" name="quantity" value="1" type="number"
-           style="width: 50px"
-           class="form-control form-control-sm" />
-
-    <button class="btn btn-link px-2"
-            onclick="this.parentNode.querySelector('input[type=number]').stepUp()">
-      <fa-icon [icon]="faPlus"></fa-icon>
-    </button>
-    </div>
-    <!-- Example single danger button -->
-    <div class="btn-group">
-      <button type="button" class="btn btn-danger dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-        Action
-      </button>
-      <ul class="dropdown-menu" aria-expanded="false">
-        <li><a class="dropdown-item" href="#">Action</a></li>
-        <li><a class="dropdown-item" href="#">Another action</a></li>
-        <li><a class="dropdown-item" href="#">Something else here</a></li>
-        <li><hr class="dropdown-divider"></li>
-        <li><a class="dropdown-item" href="#">Separated link</a></li>
-      </ul>
-    </div>
-    <button class="btn btn-primary" style="background-color: forestgreen">Add to cart</button>
-  </div>
-  <div>
-  </div>
-<!--  <app-counter-input></app-counter-input>-->
 </div>
-<!--</div>-->

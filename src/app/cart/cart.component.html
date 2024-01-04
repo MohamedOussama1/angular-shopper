@@ -9,18 +9,18 @@
                 <div class="p-5">
                   <div class="d-flex justify-content-between align-items-center mb-5">
                     <h1 class="fw-bold mb-0 text-black">Shopping Cart</h1>
-                    <h6 class="mb-0 text-muted">3 items</h6>
+                    <h6 class="mb-0 text-muted">{{getNumberOfItems()}} items</h6>
                   </div>
                   <hr class="my-4">
 
-                  <ng-template [ngIf]="false">
-                    <div>
-                      <p>Cart is empty</p>
-                    </div>
-                  </ng-template>
-                  <ng-template ngFor let-item [ngForOf]="cart?.items" let-i="index">
-                  <app-cart-item [cartItem]=item></app-cart-item>
-<!--                    <p>{{cart.items.at(i)?.name}}</p>-->
+                  <div *ngIf="!(getNumberOfItems()) else cartItems">
+                    <p>Cart is empty</p>
+                  </div>
+
+                  <ng-template #cartItems>
+                    <ng-template ngFor let-item [ngForOf]="cart?.items" let-i="index">
+                      <app-cart-item [cartItem]=item></app-cart-item>
+                    </ng-template>
                   </ng-template>
 
                   <div class="pt-5">
@@ -35,8 +35,8 @@
                   <hr class="my-4">
 
                   <div class="d-flex justify-content-between mb-4">
-                    <h5 class="text-uppercase">items 3</h5>
-                    <h5>€ 132.00</h5>
+                    <h5 class="text-uppercase">items {{getNumberOfItems()}}</h5>
+                    <h5>{{getTotal()}} Dhs</h5>
                   </div>
 
                   <h5 class="text-uppercase mb-3">Shipping</h5>
@@ -49,7 +49,7 @@
 
                   <div class="d-flex justify-content-between mb-5">
                     <h5 class="text-uppercase">Total price</h5>
-                    <h5>€ 137.00</h5>
+                    <h5>{{getTotal()}} Dhs</h5>
                   </div>
 
                   <button type="button" class="btn btn-primary btn-block btn-lg"
