@@ -12,7 +12,7 @@
       <fa-icon [icon]="faShop"></fa-icon>
     </button>
     </div>
-    <select class="form-control custom-select" style="display: inline-block; text-align: center;" name="selectedCategory" [(ngModel)]="selectedCategory"
+    <select aria-label="categories" class="form-control custom-select" style="display: inline-block; text-align: center;" name="selectedCategory" [(ngModel)]="selectedCategory"
             (ngModelChange)="onCategoryChange()">
       {{selectedCategory}}
       <option>All</option>

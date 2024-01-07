@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {UserService} from "../user.service";
 import {User} from "../model/User";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-login',
@@ -9,12 +10,13 @@ import {User} from "../model/User";
   styleUrls: ['./login.component.css', '../personal-info/personal-info.component.css']
 })
 export class LoginComponent {
-  email : string | undefined;
-  password : string | undefined;
+  email : string;
+  password : string;
   isValidEmail : number | any = 0;
   isInValidPassword : number | any = 0;
   user? : User | any;
-  constructor(private userService : UserService) {
+  constructor(private userService : UserService,
+              private authService : AuthService) {
   }
   continue(emailForm : NgForm){
     this.email = emailForm.value["email"]
@@ -25,13 +27,14 @@ export class LoginComponent {
   login(passwordForm : NgForm){
     this.password = passwordForm.value["password"]
     if (this.password)
-      this.userService.verifyLogin(this.email, this.password).subscribe(value => {
-        if (!value)
-          this.isInValidPassword = 1;
-        else {
-          this.user = value;
-          this.userService.emitChange(this.user);
-        }
-      });
+      this.authService.login(this.email, this.password);
+      // this.userService.verifyLogin(this.email, this.password).subscribe(value => {
+      //   if (!value)
+      //     this.isInValidPassword = 1;
+      //   else {
+      //     this.user = value;
+      //     this.userService.emitChange(this.user);
+      //   }
+      // });
   }
 }

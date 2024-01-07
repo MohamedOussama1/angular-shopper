@@ -18,7 +18,7 @@
                   </div>
 
                   <ng-template #cartItems>
-                    <ng-template ngFor let-item [ngForOf]="cart?.items" let-i="index">
+                    <ng-template ngFor let-item [ngForOf]="cart.items" let-i="index">
                       <app-cart-item [cartItem]=item></app-cart-item>
                     </ng-template>
                   </ng-template>

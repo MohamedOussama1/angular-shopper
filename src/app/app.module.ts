@@ -23,6 +23,7 @@ import { LoginComponent } from './login/login.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { ProductComponent } from './product/product.component';
+import { CommentComponent } from './comment/comment.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { ProductComponent } from './product/product.component';
     LoginComponent,
     CartItemComponent,
     ProductComponent,
+    CommentComponent,
   ],
   imports: [
     BrowserModule,

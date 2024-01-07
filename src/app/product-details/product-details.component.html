@@ -1,16 +1,16 @@
 <div id="flex-container" style="margin: 10%; text-align: center; display: flex; background-color: white; justify-content: center;"
      xmlns="http://www.w3.org/1999/html">
   <div id="right">
-    <h5 class="text-decoration-underline" style="font-weight: 300; font-size: 16px">{{cartItem.product?.category}}</h5>
-    <h2 style="margin-bottom: 0.5rem">{{cartItem.product?.title}}</h2>
+    <h5 class="text-decoration-underline" style="font-weight: 300; font-size: 16px">{{product.category}}</h5>
+    <h2 style="margin-bottom: 0.5rem">{{product.title}}</h2>
     <div style="height: 90px; width: 300px">
-      <p class="description line-clamp">{{cartItem.product?.description}}</p>
+      <p class="description line-clamp">{{product.description}}</p>
     </div>
     <span class="d-flex flex-row space-between">
-    <star-rating [disabled]=true [starType]="'svg'" [rating]="cartItem.product.rating"></star-rating>
-      <p style="font-size: 14px">({{cartItem.product?.rating}})</p>
+    <star-rating [disabled]=true [starType]="'svg'" [rating]="product.rating"></star-rating>
+      <p style="font-size: 14px">({{product.rating}})</p>
       </span>
-    <h4>{{cartItem.product?.price}} Dh</h4>
+    <h4>{{product.price}} Dh</h4>
     <div class="quantity-stepper">
       <button *ngIf="!cartQty else inCartButton"
               id="addToCart"
@@ -47,12 +47,12 @@
         <section class="d-md-flex align-items-center top-0" style="position: inherit">
           <div class="position-relative" style="width: 117px; margin: 0.5rem">
             <div id="imagesGrid">
-              <div class="imageItem" *ngFor="let image of cartItem.product?.images">
+              <div class="imageItem" *ngFor="let image of product.images">
       <span style="display: inline;">
         <img [src]="image"
              style="width: 50px; height: 50px"
              (mouseover)="setMainImage(image)"
-             alt="{{cartItem.product?.thumbnail}}">
+             alt="{{product.thumbnail}}">
       </span>
               </div>
             </div>
@@ -64,4 +64,5 @@
       </div>
     </div>
   </div>
+  <app-comment></app-comment>
 </div>
