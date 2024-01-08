@@ -1,9 +1,7 @@
-import {Component, OnChanges, OnDestroy, OnInit, signal} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {CartService} from "../cart.service";
-import {Cart, CartItem, Order} from "../model/cart.model";
-import {Subscription} from "rxjs";
+import {Cart, CartItem, CartItemDto, Order, OrderDto} from "../model/cart.model";
 import {User} from "../model/User";
-import {ProductService} from "../product.service";
 import {UserService} from "../user.service";
 import {Router} from "@angular/router";
 
@@ -36,26 +34,27 @@ export class CartComponent implements OnInit, OnDestroy{
       this.router.navigate(['/login']);
       return;
     }
+    if (!(this.cart.items.length)) {
+      this.router.navigate(['home'])
+      return;
+    }
     let today : Date | string = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
-    const order : Order = {id : undefined, user : this.user, orderDetails : this.cart.items, date : new Date(today)}
+    let cartItemsDto : Array<CartItemDto> = this.cart.items.map((cartItem) =>
+      new CartItemDto(cartItem.id, cartItem.product.id, cartItem.quantity)
+    )
+    const order : OrderDto = {id : undefined, userId : this.user.id, orderDetails : cartItemsDto, date : new Date(today)}
     this.cartService.createOrder(order).subscribe((response) => {
-      if (response && this.user)
-        this.router.navigate(['/orders/' + this.user?.id]);
+      if (this.user) {
+        this.router.navigate(['orders']);
+        console.log(this.user.id)
+        this.cartService.clearCart();
+      }
     });
   }
-
-  // onCheckout(): void {
-  //   this.http
-  //     .post('http://localhost:4242/checkout', {
-  //       items: this.cart?.items,
-  //     })
-  //     .subscribe(async (res: any) => {
-  //     });
-  //
   ngOnDestroy() {
   }
 }

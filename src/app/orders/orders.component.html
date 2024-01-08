@@ -1,8 +1,19 @@
 <div class="d-flex flex-column justify-content-center align-items-center">
-  <div *ngFor="let order of orders">
-    <p>{{order.date}}</p>
-    <div *ngFor="let orderDetail of order.orderDetails">
-      <app-order-detail [orderDetail]="orderDetail"></app-order-detail>
+  <div *ngIf="(orders && orders.length) else empty">
+    <div id="order" *ngFor="let order of orders" style="border-radius: 20px;" class="p-4 m-4">
+      <div class="d-flex flex-row justify-content-between w-100">
+        <p>{{order.date}}</p>
+        <p class="fw-bold">{{getTotal(order)}} Dhs</p>
+      </div>
+      <div *ngFor="let orderDetail of order.orderDetails">
+        <app-order-detail [orderDetail]="orderDetail"></app-order-detail>
+      </div>
     </div>
   </div>
+  <ng-template #empty>
+    <div style="margin-top: 200px;">
+      <p>No orders to show!</p>
+      <a href="/cart" class="btn btn-primary btn-lg">Order</a>
+    </div>
+  </ng-template>
 </div>

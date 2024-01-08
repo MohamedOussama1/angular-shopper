@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Cart, CartItem, Order, Product} from "./model/cart.model";
+import {Cart, CartItem, Order, OrderDto, Product} from "./model/cart.model";
 import {BehaviorSubject} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
@@ -58,6 +58,7 @@ export class CartService {
   clearCart(): void {
     this.cartSubject.next({ items: [] });
     this.cart = {items : []};
+    sessionStorage.removeItem(this.storageKey);
   }
 
   getTotal(items: CartItem[]): number {
@@ -71,7 +72,7 @@ export class CartService {
       .reduce((prev, current) => prev + current.quantity, 0);
   }
 
-  createOrder(order : Order) {
+  createOrder(order : OrderDto) {
     return this.http.post("http://localhost:8080/orders/", order);
   }
 }

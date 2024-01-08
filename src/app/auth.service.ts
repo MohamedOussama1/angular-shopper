@@ -4,6 +4,7 @@ import {HttpClient} from "@angular/common/http";
 import {User} from "./model/User";
 import {decodeJwt, JWTPayload, jwtVerify, KeyLike} from "jose";
 import {UserService} from "./user.service";
+import {CartService} from "./cart.service";
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +16,8 @@ export class AuthService {
   EXPIRATION_KEY = "expirates_at"
   user : User = new User("", "", "");
   constructor(private http: HttpClient,
-              private userService : UserService) {
+              private userService : UserService,
+              private cartService : CartService) {
 
   }
 
@@ -32,7 +34,6 @@ export class AuthService {
     const decoded : JWTPayload= decodeJwt(jwt);
     const userId : string | undefined = decoded.sub;
     if (userId) {
-      console.log(userId);
       this.userService.getUserById(+userId).subscribe((user) => {
         this.userService.userSubject.next(user);
         this.userService.user = user;
@@ -42,7 +43,7 @@ export class AuthService {
 
   logout() {
     if (localStorage.getItem(this.AUTH_KEY))
-      sessionStorage.removeItem("cartItem")
+      this.cartService.clearCart();
     localStorage.removeItem(this.AUTH_KEY);
     localStorage.removeItem(this.EXPIRATION_KEY);
     this.userService.userSubject.next(undefined);

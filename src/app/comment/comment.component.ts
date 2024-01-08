@@ -5,7 +5,7 @@ import {ActivatedRoute, Route, Router} from "@angular/router";
 import {ProductService} from "../product.service";
 import {UserService} from "../user.service";
 import {FormControl, FormGroup} from "@angular/forms";
-import {Comment} from "../model/Comment";
+import {Comment, CommentDto} from "../model/Comment";
 
 @Component({
   selector: 'app-comment',
@@ -43,9 +43,11 @@ export class CommentComponent implements OnInit{
     const title = this.reviewForm.value["title"];
     const rating = this.reviewForm.value["rating"];
     console.log(this.reviewForm);
-    if (this.user && name && details && title && rating)
-      this.productService.postReview(new Comment(this.user, this.product, name, details, title, +rating)).subscribe((response) => {
+    if (this.user) {
+      if (this.user.id && name && details && title && rating)
+        this.productService.postReview(new CommentDto(this.user.id, this.product.id, name, details, title, +rating)).subscribe((response) => {
           this.router.navigate(['/products/' + this.product.id]);
-      });
+        });
+    }
   }
 }

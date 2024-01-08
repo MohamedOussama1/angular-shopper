@@ -8,12 +8,13 @@ import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {LoginComponent} from "./login/login.component";
 import {CommentComponent} from "./comment/comment.component";
 import {OrdersComponent} from "./orders/orders.component";
+import {authGuard} from "./auth.guard";
 
 const routes: Routes = [
   {path: '', component: ListProductComponent},
   {path: 'products/:id', component: ProductDetailsComponent},
   {path: 'register', component: RegisterComponent},
-  {path: 'personal-info/:id', component: PersonalInfoComponent},
+  {path: 'personal-info/:id', component: PersonalInfoComponent, canActivate : [authGuard]},
   {path: 'review/:id', component: CommentComponent},
   {path: 'orders', component: OrdersComponent},
   {path: 'login', component: LoginComponent},

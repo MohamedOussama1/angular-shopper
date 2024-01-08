@@ -4,6 +4,7 @@ import {UserService} from "../user.service";
 import {User} from "../model/User";
 import {AuthService} from "../auth.service";
 import {Route, Router} from "@angular/router";
+import {CartService} from "../cart.service";
 
 @Component({
   selector: 'app-login',
@@ -18,6 +19,7 @@ export class LoginComponent {
   user? : User | any;
   constructor(private userService : UserService,
               private authService : AuthService,
+              private cartService : CartService,
               private router : Router) {
   }
   continue(emailForm : NgForm){

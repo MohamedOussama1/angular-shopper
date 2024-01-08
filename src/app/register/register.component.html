@@ -1,5 +1,5 @@
 <div style=" align-items: center; margin-top: 100px">
-  <form id="register-form" (ngSubmit)="register(registerForm)" #registerForm="ngForm" class="bg-dark" style="width: 350px; padding: 14px 18px; min-width: 0">
+  <form id="register-form" (ngSubmit)="register(registerForm)" #registerForm="ngForm" style="width: 350px; padding: 14px 18px; min-width: 0">
     <h1>Create account</h1>
     <div *ngIf="!validForm" >
       <p style="color: red">Invalid Information</p>
@@ -35,7 +35,7 @@
     <input id="submit" [disabled]="registerForm.invalid" class="button-input" type="submit" value="Continue">
     <hr>
     <div>
-      <span style="color: white">Already have an account? </span>
+      <span style="color: black">Already have an account? </span>
       <a href="/login" style="color: rgb(89, 183, 255)">Sign in</a>
     </div>
   </form>

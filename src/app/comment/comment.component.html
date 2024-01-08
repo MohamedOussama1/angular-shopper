@@ -21,7 +21,7 @@
                 <span>Full Name</span>
               </label>
               <div>
-                <textarea required formControlName="name" maxlength="25" rows="1" aria-describedby="react-aria-11" id="name" name="name" placeholder="First and last name">{{user?.name}}</textarea>
+                <textarea required [value]="user?.name" formControlName="name" maxlength="25" rows="1" aria-describedby="react-aria-11" id="name" name="name" placeholder="First and last name">{{user?.name}}</textarea>
               </div>
             </div>
             <div class="mt-4 w-100 fs-5">

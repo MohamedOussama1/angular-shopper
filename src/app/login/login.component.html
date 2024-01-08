@@ -1,5 +1,5 @@
 <div style=" align-items: center; margin-top: 100px">
-  <form id="email-form" (ngSubmit)="continue(emailForm)" #emailForm="ngForm" *ngIf="(isValidEmail <= 1) else passwordForm" class="bg-dark">
+  <form id="email-form" (ngSubmit)="continue(emailForm)" #emailForm="ngForm" *ngIf="(isValidEmail <= 1) else passwordForm">
     <h1>Sign in</h1>
     <div *ngIf="isValidEmail == 1" >
       <p style="color: red">We cannot find an account with that email address</p>
@@ -14,17 +14,17 @@
     <input id="continue" class="button-input" type="submit" value="Continue">
     <hr>
     <div>
-      <span style="color: white">New to Shopper? </span>
+      <span style="color: black">New to Shopper? </span>
       <a href="/register" style="color: rgb(89, 183, 255)">Create Account</a>
     </div>
   </form>
   <ng-template #passwordForm>
-    <form id="password-form" (ngSubmit)="login(passwordForm)" #passwordForm="ngForm" class="bg-dark">
+    <form id="password-form" (ngSubmit)="login(passwordForm)" #passwordForm="ngForm">
       <h1>Sign in</h1>
       <div *ngIf="isInValidPassword" >
         <p style="color: red">Incorrect password</p>
       </div>
-      <p style="color: white">
+      <p style="color: black">
         {{this.email}}
         <a href="/login"> Change</a>
       </p>
@@ -38,7 +38,7 @@
       <input id="sing-in" class="button-input" type="submit" value="Sign in">
       <hr>
       <div>
-        <span style="color: white">New to Shopper? </span>
+        <span style="color: black">New to Shopper?</span>
         <a href="/register" style="color: rgb(89, 183, 255)">Create Account</a>
       </div>
     </form>

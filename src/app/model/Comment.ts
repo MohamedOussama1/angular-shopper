@@ -19,3 +19,22 @@ export class Comment {
     this.rating = rating;
   }
 }
+
+export class CommentDto{
+  id : number
+  userId : number;
+  productId : number;
+  name : string;
+  details : string;
+  title : string;
+  rating : number
+
+  constructor(userId: number, productId: number, name: string, details: string, title: string, rating: number) {
+    this.userId = userId;
+    this.productId = productId;
+    this.name = name;
+    this.details = details;
+    this.title = title;
+    this.rating = rating;
+  }
+}

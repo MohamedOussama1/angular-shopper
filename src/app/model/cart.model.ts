@@ -8,10 +8,34 @@ export interface CartItem {
   product : Product;
   quantity : number;
 }
-export interface Order {
+export class CartItemDto {
+  id : number | undefined;
+  productId : number;
+  quantity : number;
+
+
+  constructor(id: number | undefined, productId: number, quantity: number) {
+    this.id = id;
+    this.productId = productId;
+    this.quantity = quantity;
+  }
+}
+export class Order {
   id : number | undefined;
   user : User | undefined;
-  orderDetails : Array<CartItem>
+  orderDetails : Array<CartItem>;
+  date : Date;
+
+  constructor(id: number | undefined, user: User | undefined, date: Date) {
+    this.id = id;
+    this.user = user;
+    this.date = date;
+  }
+}
+export interface OrderDto {
+  id : number | undefined;
+  userId : number | undefined;
+  orderDetails : Array<CartItemDto>
   date : Date
 }
 export interface Product {

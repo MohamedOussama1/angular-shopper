@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Comment} from "./model/Comment";
+import {CommentDto} from "./model/Comment";
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class ProductService {
     return this.http.get("http://localhost:8080/comments/product/" + productId);
   }
 
-  postReview(comment: Comment) {
+  postReview(comment: CommentDto) {
     console.log(comment);
     return this.http.post("http://localhost:8080/comments", comment);
   }

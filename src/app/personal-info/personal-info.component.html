@@ -1,5 +1,5 @@
 <div style=" align-items: center; margin-top: 100px">
-  <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm"  class="bg-dark">
+  <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm">
     <h1>Edit profile</h1>
     <div class="a-row a-spacing-base">
       <label id="name-label" for="name" >Name</label>
@@ -48,9 +48,9 @@
              [(ngModel)]="user.zip">
     </div>
     <hr>
-    <input id="submit" class="button-input" type="submit" value="Save changes">
+    <input id="submit" class="button-input btn btn-primary btn-lg" type="submit" value="Save changes">
   </form>
   <div class="d-flex justify-content-center align-items-center">
-    <button class="btn btn-primary bg-danger" (click)="logout()">Logout</button>
+    <button class="btn-logout btn btn-danger" (click)="logout()">Logout</button>
   </div>
 </div>
