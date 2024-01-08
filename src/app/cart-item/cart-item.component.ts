@@ -29,12 +29,14 @@ export class CartItemComponent {
   }
   onAddToCart(): void {
     this.cartService.addToCart({
+      id : undefined,
       product: this.cartItem.product,
       quantity: 1
     });
   }
   onRemoveFromCart(): void {
     this.cartService.removeQuantity({
+      id : undefined,
       product: this.cartItem.product,
       quantity: 1
     });

@@ -1,44 +1,37 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductService} from "../product.service";
 import {UserService} from "../user.service";
 import {User} from "../model/User";
-import {faPlus, faShippingFast, faShop, faShoppingCart, faUser} from "@fortawesome/free-solid-svg-icons";
+import {faShippingFast, faShop, faShoppingCart, faUser} from "@fortawesome/free-solid-svg-icons";
+import {Subscription} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-navbar',
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
-export class NavbarComponent implements OnInit{
-
-  searchText = "";
-  selectedCategory = "All";
+export class NavbarComponent implements OnInit, OnDestroy{
   categories : Array<string> | undefined;
-  user? : User | null;
+  user : User | undefined;
+  userSubscription : Subscription | undefined;
   constructor(private productService : ProductService,
-      private _userService : UserService) {
-      _userService.changeEmitted$.subscribe(user => {
-      this.user = user;
-    });
+              private userService : UserService,
+              protected router : Router) {
   }
-  @Output() textChanged = new EventEmitter<{searchText : string, category : string}>();
-  @Output() categoryChanged = new EventEmitter<string>();
-
-  onTextChange() {
-      this.textChanged.emit({searchText : this.searchText, category : this.selectedCategory});
-  }
-  onCategoryChange() {
-    this.categoryChanged.emit(this.selectedCategory);
-    this.searchText = "";
-  }
-
   ngOnInit(): void {
     this.productService.getCategories().subscribe((response) => this.categories = response);
+    this.userService.user$.subscribe((user) => this.user = user);
   }
 
   protected readonly faShop = faShop;
-  protected readonly faPlus = faPlus;
   protected readonly faShoppingCart = faShoppingCart;
   protected readonly faUser = faUser;
   protected readonly faShippingFast = faShippingFast;
+
+  ngOnDestroy(): void {
+    this.userSubscription?.unsubscribe();
+  }
+
+  protected readonly location = location;
 }

@@ -6,37 +6,33 @@
     <button
       class="btn btn-primary add-btn"
       style="border-radius: 150px; display: flex; justify-content: space-around;"
-      href="/"
+      (click)="this.router.navigate(['/'])"
     >
       <span style="display: inline; text-align: center; font-size: 29px">Shopper</span>
       <fa-icon [icon]="faShop"></fa-icon>
     </button>
     </div>
-    <select aria-label="categories" class="form-control custom-select" style="display: inline-block; text-align: center;" name="selectedCategory" [(ngModel)]="selectedCategory"
-            (ngModelChange)="onCategoryChange()">
-      {{selectedCategory}}
-      <option>All</option>
-      <option *ngFor="let category of categories">
-        {{category}}
-      </option>
-    </select>
-    <form class="form" style="width: 100%;">
-      <input class="form-control"
-             name="searchText" [(ngModel)]="searchText"
-             (ngModelChange)="onTextChange()"
-             placeholder="Search Product, Category" aria-label="Search">
-    </form>
+    <ng-content></ng-content>
     <div id="nav">
       <ul>
         <li>
-          <a
+          <a *ngIf="user else signIn"
             class="btn btn-primary add-btn"
             style="border-radius: 100px; display: flex; justify-content: space-around;"
-            href="/cart"
+            href="/personal-info/{{user.id}}"
           >
             <fa-icon [icon]="faUser"></fa-icon>
-            <span style="display: inline; text-align: center">Profile</span>
+            <span style="display: inline; text-align: center">{{user.name.split(" ")[0]}}</span>
           </a>
+          <ng-template #signIn>
+            <a class="btn btn-primary add-btn"
+               style="border-radius: 100px; display: flex; justify-content: space-around;"
+               href="/login"
+            >
+              <fa-icon [icon]="faUser"></fa-icon>
+              <span style="display: inline; text-align: center">Sign In</span>
+            </a>
+          </ng-template>
         </li>
         <li>
           <a

@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import {CommonModule, NgOptimizedImage} from "@angular/common";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { AppRoutingModule } from './app-routing.module';
 import {NgbDropdownModule, NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {HttpClientModule} from "@angular/common/http";
@@ -24,8 +24,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { CartItemComponent } from './cart-item/cart-item.component';
 import { ProductComponent } from './product/product.component';
 import { CommentComponent } from './comment/comment.component';
+import {JwtModule} from "@auth0/angular-jwt";
+import { SearchbarComponent } from './searchbar/searchbar.component';
 
-
+export function tokenGetter() {
+  return localStorage.getItem("access_token");
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -39,6 +43,7 @@ import { CommentComponent } from './comment/comment.component';
     CartItemComponent,
     ProductComponent,
     CommentComponent,
+    SearchbarComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,8 +54,17 @@ import { CommentComponent } from './comment/comment.component';
     NgbModule,
     NgbDropdownModule,
     FormsModule,
+    ReactiveFormsModule,
     FontAwesomeModule,
-    StarRatingModule.forRoot()
+    StarRatingModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        allowedDomains: ["localhost:8080"],
+        disallowedRoutes: ["https://example.com/examplebadroute/"],
+      },
+    }),
+    ReactiveFormsModule,
   ],
   providers: [ProductService, UserService],
   bootstrap: [AppComponent]

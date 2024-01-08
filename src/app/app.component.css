@@ -37,3 +37,19 @@ h1 {
   float: left;
   align-content: center;
 }
+.custom-select {
+  background-color: white;
+  border-top-left-radius: 100px;
+  border-bottom-left-radius: 100px;
+  width: auto;
+  font-family: inherit;
+  cursor: pointer;
+  box-sizing: content-box;
+  position: relative;
+  float: left;
+  overflow: hidden;
+}
+input{
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+}

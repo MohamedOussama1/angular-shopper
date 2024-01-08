@@ -1,7 +1,9 @@
-<div style=" align-items: center">
-<h1 id="title">Shopper</h1>
-  <form id="register-form" (ngSubmit)="register(registerForm)" #registerForm="ngForm" style="width: 350px; padding: 14px 18px; min-width: 0" class="bg-dark">
+<div style=" align-items: center; margin-top: 100px">
+  <form id="register-form" (ngSubmit)="register(registerForm)" #registerForm="ngForm" class="bg-dark" style="width: 350px; padding: 14px 18px; min-width: 0">
     <h1>Create account</h1>
+    <div *ngIf="!validForm" >
+      <p style="color: red">Invalid Information</p>
+    </div>
     <div class="a-row a-spacing-base">
       <label id="name-label" for="name" >Name</label>
       <input id="name" name="name" placeholder="First and last name"
@@ -30,7 +32,7 @@
              required>
     </div>
     <hr>
-    <input id="submit" class="button-input" type="submit" value="Continue">
+    <input id="submit" [disabled]="registerForm.invalid" class="button-input" type="submit" value="Continue">
     <hr>
     <div>
       <span style="color: white">Already have an account? </span>

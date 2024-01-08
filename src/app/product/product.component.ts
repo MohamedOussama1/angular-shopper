@@ -32,12 +32,14 @@ export class ProductComponent implements OnInit{
   }
   onAddToCart(): void {
     this.cartService.addToCart({
+      id : undefined,
       product: this.product,
       quantity: 1
     });
   }
   onRemoveFromCart(): void {
     this.cartService.removeQuantity({
+      id : undefined,
       product: this.product,
       quantity: 1
     });

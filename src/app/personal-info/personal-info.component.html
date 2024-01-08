@@ -1,5 +1,4 @@
-<div style=" align-items: center">
-  <h1 id="title">Shopper</h1>
+<div style=" align-items: center; margin-top: 100px">
   <form id="survey-form" (ngSubmit)="save(userForm)" #userForm="ngForm"  class="bg-dark">
     <h1>Edit profile</h1>
     <div class="a-row a-spacing-base">
@@ -51,4 +50,7 @@
     <hr>
     <input id="submit" class="button-input" type="submit" value="Save changes">
   </form>
+  <div class="d-flex justify-content-center align-items-center">
+    <button class="btn btn-primary bg-danger" (click)="logout()">Logout</button>
+  </div>
 </div>

@@ -1,5 +1,4 @@
-<div style=" align-items: center">
-  <h1 id="title">Shopper</h1>
+<div style=" align-items: center; margin-top: 100px">
   <form id="email-form" (ngSubmit)="continue(emailForm)" #emailForm="ngForm" *ngIf="(isValidEmail <= 1) else passwordForm" class="bg-dark">
     <h1>Sign in</h1>
     <div *ngIf="isValidEmail == 1" >
@@ -36,7 +35,6 @@
                [(ngModel)]=password
                required>
       </div>
-<!--      <input id="sing-in" class="button-input" type="submit" value="Sign in" onclick="location.href='/'">-->
       <input id="sing-in" class="button-input" type="submit" value="Sign in">
       <hr>
       <div>

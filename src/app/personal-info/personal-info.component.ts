@@ -2,7 +2,8 @@ import {Component, OnInit} from '@angular/core';
 import {NgForm} from "@angular/forms";
 import {User} from "../model/User";
 import {UserService} from "../user.service";
-import {ActivatedRoute} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
+import {AuthService} from "../auth.service";
 
 @Component({
   selector: 'app-personal-info',
@@ -11,7 +12,10 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class PersonalInfoComponent implements OnInit{
   user : User = new User("", "", "");
-  constructor(private route : ActivatedRoute, private userService: UserService) {
+  constructor(private route : ActivatedRoute,
+              private userService: UserService,
+              private authService : AuthService,
+              private router : Router) {
   }
   ngOnInit(): void {
     this.route.params.subscribe(params => {
@@ -26,6 +30,10 @@ export class PersonalInfoComponent implements OnInit{
     this.user.address = form.value["address"];
     this.user.city = form.value["city"];
     this.user.zip = form.value["zip"];
-    this.userService.updateUser(this.user);
+    this.userService.updateUser(this.user).subscribe((res) => console.log(res));
+  }
+  logout() {
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

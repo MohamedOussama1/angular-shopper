@@ -127,3 +127,23 @@ img {
   line-height: 1.25;
   font-weight: 400;
 }
+#details {
+  min-height: auto;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.5rem;
+  padding: 1rem;
+  -webkit-appearance: none;
+  background: #0000;
+  border: 0;
+  box-sizing: border-box;
+  color: #2e2f32;
+  display: block;
+  font-family: Bogle,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-weight: 400;
+  margin: 0;
+  width: 100%;
+  border-radius: 0.25rem;
+  box-shadow: inset 0 0 0 0.0625rem #909196;
+  position: relative;
+}

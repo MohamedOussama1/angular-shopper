@@ -1,7 +1,3 @@
-<app-navbar
-  (textChanged)="updateProducts($event)"
-  (categoryChanged)="updateCategory($event)">
-</app-navbar>
 <div  class="grid">
   <div *ngFor="let product of products;">
     <app-product [product]="product"></app-product>

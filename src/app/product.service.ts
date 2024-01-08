@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {Product} from "./model/cart.model";
+import {Comment} from "./model/Comment";
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +24,11 @@ export class ProductService {
     return this.http.get("https://dummyjson.com/products/category/" + category);
   }
   getCommentsByProductId(productId : number) {
-    return this.http.get("https://dummyjson.com/comments/product/" + productId);
+    return this.http.get("http://localhost:8080/comments/product/" + productId);
   }
-  addComment(comment : Comment) {
-    return this.http.post("http://localhost:8080/comments/", comment);
+
+  postReview(comment: Comment) {
+    console.log(comment);
+    return this.http.post("http://localhost:8080/comments", comment);
   }
 }

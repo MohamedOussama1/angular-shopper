@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import {Cart, CartItem, Product} from "./model/cart.model";
+import {Cart, CartItem, Order, Product} from "./model/cart.model";
 import {BehaviorSubject} from "rxjs";
+import {HttpClient} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ export class CartService {
   cart : Cart = {items : []}
   cartSubject = new BehaviorSubject<Cart>(this.cart);
   cart$ = this.cartSubject.asObservable();
-  constructor() {
+  constructor(private http : HttpClient) {
     this.cart = JSON.parse(sessionStorage.getItem(this.storageKey) || '{"items":[]}');
     this.cartSubject.next(this.cart);
   }
@@ -68,5 +69,9 @@ export class CartService {
   getNumberOfItems(items : CartItem[]) : number {
     return items
       .reduce((prev, current) => prev + current.quantity, 0);
+  }
+
+  createOrder(order : Order) {
+    return this.http.post("http://localhost:8080/orders", order);
   }
 }

@@ -1,8 +1,9 @@
-import {Component, Output, OnInit} from '@angular/core';
+import {Component, Output, OnInit, Input} from '@angular/core';
 import {ProductService} from "../product.service";
 import {CartItem, Product} from "../model/cart.model";
 import {CartService} from "../cart.service";
 import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-list-product',
@@ -10,13 +11,16 @@ import {faMinus, faPlus} from "@fortawesome/free-solid-svg-icons";
   styleUrls: ['./list-product.component.css'],
 })
 export class ListProductComponent implements OnInit{
-  protected readonly faPlus = faPlus;
+  products : any;
+  @Input() events: {text: Observable<{searchText: string, category: string}>, category: Observable<string>};
+
   constructor(private productService : ProductService,
               private cartService : CartService) {
   }
-  products : any;
   ngOnInit(): void {
       this.productService.getAll().subscribe((response) => {this.products = response.products});
+      this.events.text.subscribe((filters) => this.updateProducts(filters));
+      this.events.category.subscribe((category) => this.updateCategory(category));
   }
 
   updateProducts(filters : {searchText : string, category : string}) : void{
@@ -35,9 +39,9 @@ export class ListProductComponent implements OnInit{
   }
   onAddToCart(product: Product): void {
     this.cartService.addToCart({
+      id : undefined,
       product: product,
       quantity: 1
-
     });
   }
 
