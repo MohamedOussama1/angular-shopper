@@ -26,6 +26,8 @@ import { ProductComponent } from './product/product.component';
 import { CommentComponent } from './comment/comment.component';
 import {JwtModule} from "@auth0/angular-jwt";
 import { SearchbarComponent } from './searchbar/searchbar.component';
+import { OrdersComponent } from './orders/orders.component';
+import { OrderDetailComponent } from './order-detail/order-detail.component';
 
 export function tokenGetter() {
   return localStorage.getItem("access_token");
@@ -44,6 +46,8 @@ export function tokenGetter() {
     ProductComponent,
     CommentComponent,
     SearchbarComponent,
+    OrdersComponent,
+    OrderDetailComponent,
   ],
   imports: [
     BrowserModule,

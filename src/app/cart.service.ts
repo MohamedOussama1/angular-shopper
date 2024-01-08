@@ -72,6 +72,6 @@ export class CartService {
   }
 
   createOrder(order : Order) {
-    return this.http.post("http://localhost:8080/orders", order);
+    return this.http.post("http://localhost:8080/orders/", order);
   }
 }

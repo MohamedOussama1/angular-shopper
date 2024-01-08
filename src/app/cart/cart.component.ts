@@ -5,6 +5,7 @@ import {Subscription} from "rxjs";
 import {User} from "../model/User";
 import {ProductService} from "../product.service";
 import {UserService} from "../user.service";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-cart',
@@ -15,7 +16,8 @@ export class CartComponent implements OnInit, OnDestroy{
   cart : Cart;
   user : User | undefined;
   constructor(private cartService: CartService,
-              private userService : UserService) {
+              private userService : UserService,
+              private router : Router) {
   }
   ngOnInit(): void {
     this.cartService.cart$.subscribe((_cart) => this.cart = _cart);
@@ -30,13 +32,20 @@ export class CartComponent implements OnInit, OnDestroy{
   }
 
   onRegisterCart(){
+    if (!this.user) {
+      this.router.navigate(['/login']);
+      return;
+    }
     let today : Date | string = new Date();
     const dd = String(today.getDate()).padStart(2, '0');
     const mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
     const yyyy = today.getFullYear();
     today = mm + '/' + dd + '/' + yyyy;
     const order : Order = {id : undefined, user : this.user, orderDetails : this.cart.items, date : new Date(today)}
-    this.cartService.createOrder(order).subscribe((response) => console.log(response));
+    this.cartService.createOrder(order).subscribe((response) => {
+      if (response && this.user)
+        this.router.navigate(['/orders/' + this.user?.id]);
+    });
   }
 
   // onCheckout(): void {

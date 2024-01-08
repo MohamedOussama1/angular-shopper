@@ -35,14 +35,24 @@
           </ng-template>
         </li>
         <li>
-          <a
+          <a *ngIf="this.user else noUser"
             class="btn btn-primary add-btn"
             style="border-radius: 100px; display: flex; justify-content: space-around;"
-            href="/cart"
+            href="/orders"
           >
             <fa-icon [icon]="faShippingFast"></fa-icon>
             <span style="display: inline; text-align: center">Orders</span>
           </a>
+          <ng-template #noUser>
+            <a
+               class="btn btn-primary add-btn"
+               style="border-radius: 100px; display: flex; justify-content: space-around;"
+               href="/login"
+            >
+              <fa-icon [icon]="faShippingFast"></fa-icon>
+              <span style="display: inline; text-align: center">Orders</span>
+            </a>
+          </ng-template>
         </li>
         <li>
           <a

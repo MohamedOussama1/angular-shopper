@@ -26,4 +26,7 @@ export class UserService {
   verifyEmail(email : string | undefined){
     return this.http.get("http://localhost:8080/users/verifyEmail/" + email);
   }
+  getOrdersByUser(userId : number | undefined) : Observable<any> {
+    return this.http.get("http://localhost:8080/orders/" + userId);
+  }
 }

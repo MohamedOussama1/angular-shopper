@@ -7,6 +7,7 @@ import {RegisterComponent} from "./register/register.component";
 import {PersonalInfoComponent} from "./personal-info/personal-info.component";
 import {LoginComponent} from "./login/login.component";
 import {CommentComponent} from "./comment/comment.component";
+import {OrdersComponent} from "./orders/orders.component";
 
 const routes: Routes = [
   {path: '', component: ListProductComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'register', component: RegisterComponent},
   {path: 'personal-info/:id', component: PersonalInfoComponent},
   {path: 'review/:id', component: CommentComponent},
+  {path: 'orders', component: OrdersComponent},
   {path: 'login', component: LoginComponent},
   {path: 'cart', component: CartComponent},
   {path: '**', redirectTo: ''}

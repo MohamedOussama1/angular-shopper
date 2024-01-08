@@ -59,7 +59,5 @@ export class AppComponent {
         category: this.categorySubject.asObservable()
       };
     }
-    // if (component instanceof CartComponent)
-    //   component.user = this.user;
   }
 }

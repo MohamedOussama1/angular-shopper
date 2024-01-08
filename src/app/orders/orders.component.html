@@ -1,0 +1,8 @@
+<div class="d-flex flex-column justify-content-center align-items-center">
+  <div *ngFor="let order of orders">
+    <p>{{order.date}}</p>
+    <div *ngFor="let orderDetail of order.orderDetails">
+      <app-order-detail [orderDetail]="orderDetail"></app-order-detail>
+    </div>
+  </div>
+</div>

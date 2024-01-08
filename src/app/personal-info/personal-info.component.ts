@@ -20,7 +20,12 @@ export class PersonalInfoComponent implements OnInit{
   ngOnInit(): void {
     this.route.params.subscribe(params => {
       const id : number = params['id'];
-      this.userService.getUserById(id).subscribe(value => this.user = value);
+      this.userService.getUserById(id).subscribe(value => {
+        if (value == -1)
+          console.log("e");
+        else
+          this.user = value;
+      });
     })
   }
   save(form : NgForm) {
@@ -30,7 +35,9 @@ export class PersonalInfoComponent implements OnInit{
     this.user.address = form.value["address"];
     this.user.city = form.value["city"];
     this.user.zip = form.value["zip"];
-    this.userService.updateUser(this.user).subscribe((res) => console.log(res));
+    this.userService.updateUser(this.user).subscribe((res) => {
+      console.log(res);
+    });
   }
   logout() {
     this.authService.logout();
